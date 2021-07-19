@@ -1,0 +1,20 @@
+<section>
+  <mat-toolbar color='primary'>
+    <h2 >Users:</h2>
+  </mat-toolbar>
+  <mat-list class="users">
+    <mat-list-item *ngFor="let user of users"
+      (click)="onSelect(user)"
+      routerLink="/user/{{user.id}}">
+        <img matListAvatar src={{user.avatar}} alt="ava">
+        <h2 matLine>{{user.first_name}} {{user.last_name}}</h2>
+    </mat-list-item>
+  </mat-list>
+  <br>
+  <div class="buttons">
+    <button mat-raised-button color="primary" type="button" (click)="previousPage()" [disabled]=prev>Previous page</button>
+    <button mat-raised-button color="primary" type="button" (click)="nextPage()" [disabled]=next>Next page</button>
+  </div>
+  <br>
+  <button mat-raised-button (click)="addNewUser()">Add new user</button>
+</section>

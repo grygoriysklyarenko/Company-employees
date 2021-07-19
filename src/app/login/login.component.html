@@ -1,0 +1,13 @@
+<form [formGroup]="reactiveForm">
+  <mat-form-field  appearance="fill">
+    <mat-label for="email">Email</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="eve.holt@reqres.in">
+  </mat-form-field>
+  <mat-form-field  appearance="fill">
+    <mat-label for="password">Password</mat-label>
+    <input type="password" matInput formControlName="password" placeholder="password">
+  </mat-form-field>
+  <button mat-raised-button (click) = "onSubmit()" type="submit">Submit</button>
+  <br>
+  <button  mat-raised-button type="button" routerLink="/registration">Sign Up</button>
+</form>
