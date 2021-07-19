@@ -1,11 +1,11 @@
 <form [formGroup]="reactiveFormChange">
     <mat-form-field  appearance="fill">
         <mat-label for="name">Name</mat-label>
-        <input type="text" matInput id="name" formControlName="name" placeholder="morpheus">
+        <input type="text" matInput formControlName="name" placeholder="morpheus">
       </mat-form-field>
       <mat-form-field  appearance="fill">
         <mat-label for="job">Job</mat-label>
-        <input type="text" matInput id="job" formControlName="job" placeholder="zion resident">
+        <input type="text" matInput formControlName="job" placeholder="zion resident">
       </mat-form-field>
     <button mat-raised-button (click) = "changeUser()" type="submit" [mat-dialog-close]>Change</button>
 </form>  

@@ -37,8 +37,7 @@ export class AddNewUserComponent implements OnInit {
     this.user.name = this.reactiveFormAdd.value.name;
     this.user.job = this.reactiveFormAdd.value.job;
 
-    this.http.post('https://reqres.in/api/users', this.user).subscribe((resp: any) => {
-      // console.log(resp);
+    this.http.post('https://reqres.in/api/users', this.user).subscribe( _ => {
       this.router.navigate(['/users']);
       alert ("User added successfully!");
     });

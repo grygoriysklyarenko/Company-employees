@@ -37,8 +37,7 @@ export class ChangeUserComponent implements OnInit {
     this.user.name = this.reactiveFormChange.value.name
     this.user.job = this.reactiveFormChange.value.job
 
-    this.http.put('https://reqres.in/api/users', this.user).subscribe((resp: any) => {
-      // console.log(resp);
+    this.http.put('https://reqres.in/api/users', this.user).subscribe( _ => {
       this.router.navigate(['/users']);
       alert ("User change successfully!");
     });
