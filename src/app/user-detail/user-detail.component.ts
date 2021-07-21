@@ -13,19 +13,19 @@ import { MatDialog } from '@angular/material/dialog';
 
 export class UserDetailComponent implements OnInit {
 
-  id : any;
-  user = { first_name : '', last_name: '', id: '', avatar: ''};
+  public id : any;
+  user = { first_name : '', last_name: '', id: '', avatar: '', email:''};
 
   constructor(
     private http: HttpClient,  
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {};
 
-  ngOnInit() : void{
+  ngOnInit():void{
     this.id = this.route.snapshot.paramMap.get('id');
-    this.http.get('https://reqres.in/api/users/'+ this.id).subscribe((response:any)=>this.user = response.data);
+    this.http.get('https://reqres.in/api/users/'+ this.id).subscribe((response:any)=> this.user = response.data);
   };
 
   changInfo(){

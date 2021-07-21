@@ -5,7 +5,8 @@
   <mat-list class="users">
     <mat-list-item *ngFor="let user of users"
       (click)="onSelect(user)"
-      routerLink="/user/{{user.id}}">
+      routerLink="/user/{{user.id}}"
+      class="change-color">
         <img matListAvatar src={{user.avatar}} alt="ava">
         <h2 matLine>{{user.first_name}} {{user.last_name}}</h2>
     </mat-list-item>

@@ -18,9 +18,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { MatCardModule } from '@angular/material/card';
 import { ChangeUserComponent } from './change-user/change-user.component';
-
-
-
+import { WentWrongComponent } from './went-wrong/went-wrong.component';
+import { PasswordsMismatchComponent } from './passwords-mismatch/passwords-mismatch.component';
+import { AddedAccountComponent } from './added-account/added-account.component';
+import { ChangeUserDialogComponent } from './change-user-dialog/change-user-dialog.component';
+import { UserAddedDialogComponent } from './user-added-dialog/user-added-dialog.component';
+import { UncorrectPassDialogComponent } from './uncorrect-pass-dialog/uncorrect-pass-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,12 @@ import { ChangeUserComponent } from './change-user/change-user.component';
     UserDetailComponent,
     AddNewUserComponent,
     ChangeUserComponent,
+    WentWrongComponent,
+    PasswordsMismatchComponent,
+    AddedAccountComponent,
+    ChangeUserDialogComponent,
+    UserAddedDialogComponent,
+    UncorrectPassDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,8 @@ import { ChangeUserComponent } from './change-user/change-user.component';
     BrowserAnimationsModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 

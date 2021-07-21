@@ -1,7 +1,11 @@
+import { AddedAccountComponent } from './../added-account/added-account.component';
+import { PasswordsMismatchComponent } from '../passwords-mismatch/passwords-mismatch.component';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { WentWrongComponent } from '../went-wrong/went-wrong.component';
 
 @Component({
   selector: 'app-registration',
@@ -18,7 +22,9 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    public dialog: MatDialog,
+    ) {
       this.reactiveFormReg = new FormGroup ({});
     }
 
@@ -43,11 +49,11 @@ export class RegistrationComponent implements OnInit {
     if(this.user.password === this.user.passwordConfirm){
 
       this.http.post('https://reqres.in/api/register', this.user).subscribe( _ => {
-        alert ("Account added successfully. Sign in to your account!");
+        this.dialog.open(AddedAccountComponent);
         this.router.navigate(['/login']);
-      }, _ => alert('Something went wrong!'));
+      }, _ => this.dialog.open(WentWrongComponent));
     } else {
-      alert ('Passwords mismatch!');
+      this.dialog.open(PasswordsMismatchComponent);
     };
   };
 }

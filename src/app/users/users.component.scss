@@ -7,3 +7,8 @@ section {
 mat-toolbar  {
   justify-content: center;
 }
+
+.change-color:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}

@@ -1,6 +1,8 @@
+import { UserAddedDialogComponent } from './../user-added-dialog/user-added-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +19,8 @@ export class AddNewUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.reactiveFormAdd = new FormGroup ({});
   };
@@ -39,7 +42,7 @@ export class AddNewUserComponent implements OnInit {
 
     this.http.post('https://reqres.in/api/users', this.user).subscribe( _ => {
       this.router.navigate(['/users']);
-      alert ("User added successfully!");
+      this.dialog.open(UserAddedDialogComponent)
     });
   };
 }

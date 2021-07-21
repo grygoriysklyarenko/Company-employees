@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangeUserDialogComponent } from '../change-user-dialog/change-user-dialog.component';
 
 @Component({
   selector: 'app-change-user',
@@ -12,12 +14,13 @@ import { Router } from '@angular/router';
 export class ChangeUserComponent implements OnInit {
 
   reactiveFormChange : FormGroup;
-  user = { name: '', job:''};
+  userNew = { name: '', job:''};
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog,
   ) {
     this.reactiveFormChange = new FormGroup ({});
   };
@@ -28,18 +31,18 @@ export class ChangeUserComponent implements OnInit {
 
   initForm(){
     this.reactiveFormChange = this.fb.group({
-      name: ['morpheus'],
-      job: ['zion resident']
+      name: [],
+      job: []
     });
   };
 
   changeUser(){
-    this.user.name = this.reactiveFormChange.value.name
-    this.user.job = this.reactiveFormChange.value.job
+    this.userNew.name = this.reactiveFormChange.value.name;
+    this.userNew.job = this.reactiveFormChange.value.job;
 
-    this.http.put('https://reqres.in/api/users', this.user).subscribe( _ => {
+    this.http.put('https://reqres.in/api/users', this.userNew).subscribe( _ => {
       this.router.navigate(['/users']);
-      alert ("User change successfully!");
+      this.dialog.open(ChangeUserDialogComponent);
     });
   };
 }
