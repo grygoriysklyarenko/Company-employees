@@ -29,7 +29,9 @@ export class UserDetailComponent implements OnInit {
   };
 
   changInfo(){
-    this.dialog.open(ChangeUserComponent);
+    this.dialog.open(ChangeUserComponent, {
+      data: this.user,
+    });
   };
 
   deliteUser(){

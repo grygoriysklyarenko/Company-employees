@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ChangeUserDialogComponent } from '../change-user-dialog/change-user-dialog.component';
 
 @Component({
@@ -21,6 +21,7 @@ export class ChangeUserComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     public dialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: {first_name : '', last_name:''}
   ) {
     this.reactiveFormChange = new FormGroup ({});
   };
@@ -31,8 +32,8 @@ export class ChangeUserComponent implements OnInit {
 
   initForm(){
     this.reactiveFormChange = this.fb.group({
-      name: [],
-      job: []
+      name: this.data.first_name,
+      job: this.data.last_name
     });
   };
 
